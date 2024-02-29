@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.news.views import get_new
+from apps.news.views import NewApiViewSet
 
-urlpatterns = [
-    path("", get_new, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'news',
+    NewApiViewSet
+)
+
+urlpatterns = router.urls

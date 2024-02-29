@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.rage.views import get_rage
+from apps.rage.views import RageApiViewSet
 
-urlpatterns = [
-    path("", get_rage, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'rage',
+    RageApiViewSet
+)
+
+urlpatterns = router.urls

@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.news.models import New
+from apps.news.serializers import NewSerializer
 
 
-def get_new(request):
-    new = New.objects.all()
-    return render(request,  {'new': new})
+class NewApiViewSet(ModelViewSet):
+    queryset = New.objects.all()
+    serializer_class = NewSerializer
+    

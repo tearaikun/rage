@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.services.views import get_service
+from apps.services.views import ServiceApiViewSet
 
-urlpatterns = [
-    path("", get_service, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'service',
+    ServiceApiViewSet
+)
+
+urlpatterns = router.urls

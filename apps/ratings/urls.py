@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.ratings.views import get_rating
+from apps.ratings.views import RatingApiViewSet
 
-urlpatterns = [
-    path("", get_rating, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'rating',
+    RatingApiViewSet
+)
+
+urlpatterns = router.urls

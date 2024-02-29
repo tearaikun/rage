@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.studies.views import get_studies
+from apps.studies.views import StudiesApiViewSet
 
-urlpatterns = [
-    path("", get_studies, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'studies',
+    StudiesApiViewSet
+)
+
+urlpatterns = router.urls

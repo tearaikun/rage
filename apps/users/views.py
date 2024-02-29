@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.users.models import User
+from apps.users.serializers import UserSerializer
 
 
-def get_user(request):
-    user = User.objects.all()
-    return render(request)
+class UserApiViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

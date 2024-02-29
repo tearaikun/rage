@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "apps.abouts",
     "rest_framework",
+    "drf_yasg",
     "apps.contacts",
     "apps.rage",
     "apps.ratings",
@@ -141,3 +142,5 @@ REST_FRAMEWORK = {
     ],
   
 }
+
+AUTH_USER_MODEL = 'users.User'

@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.tracks.models import Track
+from apps.tracks.serializers import TrackSerializer
 
 
-def get_track(request):
-    track = Track.objects.all()
-    return render(request,  {'track': track})
+class TrackApiViewSet(ModelViewSet):
+    queryset = Track.objects.all()
+    serializer_class = TrackSerializer

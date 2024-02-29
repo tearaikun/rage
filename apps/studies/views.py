@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.studies.models import Studies
+from apps.studies.serializers import StudiesSerializer
 
 
-def get_studies(request):
-    studies = Studies.objects.all()
-    return render(request,  {'studies': studies})
+class StudiesApiViewSet(ModelViewSet):
+    queryset = Studies.objects.all()
+    serializer_class = StudiesSerializer

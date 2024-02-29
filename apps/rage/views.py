@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.rage.models import Rage
+from apps.rage.serializers import RageSerializer
 
 
-def get_rage(request):
-    rage = Rage.objects.all()
-    return render(request, {'rage': rage})
+class RageApiViewSet(ModelViewSet):
+    queryset = Rage.objects.all()
+    serializer_class = RageSerializer

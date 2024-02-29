@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.contacts.views import get_contact
+from apps.contacts.views import ContactApiViewSet
 
-urlpatterns = [
-    path("", get_contact, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'contacts',
+    ContactApiViewSet
+)
+
+urlpatterns = router.urls

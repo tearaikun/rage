@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.tracks.views import get_track
+from apps.tracks.views import TrackApiViewSet
 
-urlpatterns = [
-    path("", get_track, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'track',
+    TrackApiViewSet
+)
+
+urlpatterns = router.urls

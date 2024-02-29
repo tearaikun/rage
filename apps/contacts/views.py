@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.contacts.models import Contact
+from apps.contacts.serializers import ContactSerializer
 
 
-def get_contact(request):
-    contact = Contact.objects.all()
-    return render(request,  {'contact': contact})
+class ContactApiViewSet(ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer

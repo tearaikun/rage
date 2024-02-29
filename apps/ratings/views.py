@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.ratings.models import Rating
+from apps.ratings.serializers import RatingSerializer
 
 
-def get_rating(request):
-    rating = Rating.objects.all()
-    return render(request,  {'rating': rating})
+class RatingApiViewSet(ModelViewSet):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer

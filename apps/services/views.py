@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from apps.services.models import Service
+from apps.services.serializers import ServiceSerializer
 
 
-def get_service(request):
-    service = Service.objects.all()
-    return render(request,  {'service': service})
+class ServiceApiViewSet(ModelViewSet):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer

@@ -1,7 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.abouts.views import get_about
+from apps.abouts.views import AboutApiViewSet
 
-urlpatterns = [
-    path("", get_about, name="main")
-]
+router = DefaultRouter()
+router.register(
+    r'abouts',
+    AboutApiViewSet
+)
+
+urlpatterns = router.urls
