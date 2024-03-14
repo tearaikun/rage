@@ -1,6 +1,8 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
-from apps.users.models import User 
+from apps.users.models import User
+
 
 class UserSerializer(ModelSerializer):
     class Meta:
@@ -16,7 +18,7 @@ class UserSerializer(ModelSerializer):
             'phone_number',
             "password",
         ]
-        
+     
     
     def create(self, validated_data: dict):
         password = validated_data.pop("password")

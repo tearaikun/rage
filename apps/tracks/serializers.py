@@ -10,6 +10,9 @@ class TrackSerializer(ModelSerializer):
             "id",
             "title",
             "image",
-            "date"
+            "date",
+            "artist"
         ]
+
+        
         

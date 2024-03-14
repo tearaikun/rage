@@ -25,8 +25,14 @@ SECRET_KEY = 'django-insecure-!0%jm1v99eu52qd)g=fj*-sao1q%b()_onm$hyji)yu1^-%v93
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://rage1adminn.pythonanywhere.com", "rage1adminn.pythonanywhere.com"]
+ALLOWED_HOSTS = ["https://rage1adminn.pythonanywhere.com", "rage1adminn.pythonanywhere.com", "127.0.0.1"]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1.3000',
+    'http://0.0.0.0',
+]
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "apps.abouts",
     "rest_framework",
+    "rest_framework_simplejwt",
     "drf_yasg",
     "apps.contacts",
     "apps.rage",
@@ -46,9 +53,11 @@ INSTALLED_APPS = [
     "apps.users",
     "apps.services",
     "apps.news",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,8 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = os.path.join(BASE_DIR, '  ')
+
+STATIC_ROOT = os.path.join(BASE_DIR, '')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -136,10 +145,17 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
     ],
-  
+    'DFEAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }
 
 AUTH_USER_MODEL = 'users.User'

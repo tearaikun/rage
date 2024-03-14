@@ -4,7 +4,7 @@ from apps.users.views import UserApiViewSet
 
 router = DefaultRouter()
 router.register(
-    r'users',
+    r'user',
     UserApiViewSet
 )
 

@@ -7,4 +7,6 @@ from apps.news.serializers import NewSerializer
 class NewApiViewSet(ModelViewSet):
     queryset = New.objects.all()
     serializer_class = NewSerializer
-    
+    filterset_fields = [
+        'title'
+        ]

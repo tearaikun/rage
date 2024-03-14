@@ -7,3 +7,6 @@ from apps.ratings.serializers import RatingSerializer
 class RatingApiViewSet(ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
+    filterset_fields = [
+        'author', 
+        ]

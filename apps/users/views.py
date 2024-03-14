@@ -7,3 +7,7 @@ from apps.users.serializers import UserSerializer
 class UserApiViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    filterset_fields = [
+        'id', 
+        'username'
+        ]

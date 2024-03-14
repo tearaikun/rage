@@ -17,6 +17,9 @@ class About(models.Model):
     description = models.CharField(
         max_length=640
     )
+    is_activae = models.BooleanField(
+        default=True, verbose_name="active"
+    )
 
 
     class Meta:

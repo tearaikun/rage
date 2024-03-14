@@ -7,6 +7,10 @@ class Track(models.Model):
         max_length=256
     )
 
+    artist = models.CharField(
+        max_length=256
+    )
+
     image = models.ImageField(
         upload_to='track/',
         verbose_name="Изображение",
