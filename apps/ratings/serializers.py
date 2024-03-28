@@ -10,6 +10,7 @@ class RatingSerializer(ModelSerializer):
             "id",
             "rating",
             "feedback",
-            "author"
+            "author",
+            "track"
         ]
         

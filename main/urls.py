@@ -55,15 +55,6 @@ api_urlpatterns = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(api_urlpatterns)),
-    path('', include('apps.users.urls')),
-    path("tracks/", include("apps.tracks.urls")),
-    path("studies/", include("apps.studies.urls")),
-    path('ratings/', include("apps.ratings.urls")),
-    path('rage/', include("apps.rage.urls")),
-    path('contacts/', include("apps.contacts.urls")),
-    path('abouts/', include("apps.abouts.urls")), 
-    path('services/', include("apps.services.urls")),
-    path('news/', include("apps.news.urls")),  
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

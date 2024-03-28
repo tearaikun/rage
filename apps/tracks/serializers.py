@@ -10,8 +10,10 @@ class TrackSerializer(ModelSerializer):
             "id",
             "title",
             "image",
+            "music",
             "date",
-            "artist"
+            "artist",
+            "rating"
         ]
 
         
